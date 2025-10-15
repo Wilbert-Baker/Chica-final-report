@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Blog Detail
+{% endblock %}
+
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/login.css'%}">
+{% endblock %}
+
+
+{% block content %}
+<div class="blog-detail">
+
+    {% if post.image %}
+    <img src="{{ post.img.url }}" alt="{{ post.title }}">
+    {% endif %}
+
+    <h1>{{ post.title }}</h1>
+    <label>Author: {{ post.author.username}}</label>
+    <label>Created on: {{ blog.created_on}}</label>
+
+    <p>{{blog.content|linebreaksbr}}</p>
+    
+</div>
+
+
+{% endblock %}

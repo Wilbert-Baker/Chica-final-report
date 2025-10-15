@@ -1,0 +1,30 @@
+.login {
+    background-color: #a5d419;
+}
+
+.login h1 {
+    color: rgb(218, 25, 25);
+}
+
+.login form {
+    border: 1px solid #333;
+    border-radius: 6px;
+    max-width: 350px;
+    margin-left: auto;
+    margin-right: auto;
+
+    background-color: rgb(26, 52, 197);
+    padding: 20px;
+}
+
+.login form label {
+    display: block;
+}
+
+.login form input {
+    display: block;
+    width: 100%;
+}
+
+
+

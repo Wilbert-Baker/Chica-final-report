@@ -1,0 +1,11 @@
+
+.blog {
+    max-width: 1080px;
+    margin-left: auto;
+    margin-right: auto
+}
+.blog h1 {
+    color: rgb(34, 190, 122);
+    text-align: center;
+    margin-top: 20px;
+}    

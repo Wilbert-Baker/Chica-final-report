@@ -1,0 +1,84 @@
+
+{% extends 'base.html' %}
+
+{% block title %}
+Login
+{% endblock %}
+
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/login.css'%}">
+{% endblock %}
+
+{% block content %}
+<div class="login">
+    
+</div>
+{% endblock %}
+# create the project
+django-admin startproject config .
+
+----------------------------------------------
+
+-- create apps --
+
+python3 manage.py startapp namehere
+
+1 - create a urls 
+2 - register the apps
+3 - register the urls
+
+
+
+
+
+-- MIGRATIONS --
+EVERYTIME you modify a model you need to make migrations:
+python3 manage.py makemigrations
+python3 manage.py migrate
+.login {
+    background-color: #f4f0f0;
+}
+
+.login h1 {
+    color: darkcyan;
+}
+
+.login form {
+    border: 1px solid #333;
+    border-radius: 6px;
+    max-width: 350px;
+    margin-left: auto;
+    margin-right: auto;
+
+    background-color: white;
+    padding: 20px;
+}
+
+.login form label {
+    display: block;
+}
+
+.login form input {
+    display: block;
+    width: 100%;
+}
+---- GIT -----
+- create the .gitignore file
+run:
+git init
+git add -A
+git commit -m "initial" 
+
+- create a github repository and copy https for win, ssh for mac
+run:
+git remote add origin PASTERURLHERE
+
+- first push:
+git push -u origin main 
+- if that ^ fails try:
+git push -u origin master
+
+
+- next push is just:
+git push

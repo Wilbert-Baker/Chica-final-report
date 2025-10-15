@@ -1,0 +1,67 @@
+
+.home{
+    background-color: rgb(82, 20, 181);
+    padding: 3rem 1rem;
+}
+
+home h1 {
+    color: rgb(224, 16, 34);
+}
+
+.home .main-img {
+    border: 2x solid #c61111;
+    border-radius: 10px;
+    width: 100%; ;
+    
+}
+
+
+.home .section1 {
+    display: flex;
+    gap:1.3rem;
+}
+
+.home .section1 .info {
+    padding-right: 10px;
+}
+
+@media(max-width: 767px) {
+    /*style for mobile devices*/
+
+   .home h1 {
+        text-align: center;
+        color:antiquewhite
+   } 
+
+  .section1 {
+    flex-direction: column;
+    text-align: center;
+  }
+}  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    width: 600px;
+    display: flex;

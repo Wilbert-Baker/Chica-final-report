@@ -82,3 +82,79 @@ git push -u origin master
 
 - next push is just:
 git push
+https://www.ibm.com/think/topics/data-security#1003835715
+
+A data breach is any security incident in which unauthorized parties access sensitive or confidential information, including personal data (Social Security numbers, bank account numbers, healthcare data) and corporate data (customer records, intellectual property, financial information).
+
+The terms “data breach” and “breach” are often used interchangeably with “cyberattack.” However, not all cyberattacks are data breaches. Data breaches include only those security breaches where someone gains unauthorized access to data.
+
+For example, a distributed denial of service (DDoS) attack that overwhelms a website is not a data breach. A ransomware attack that locks up a company's customer data and threatens to leak the stolen data unless the company pays a ransom is a data breach. The physical theft of hard drives, USB flash drives or even paper files containing sensitive information is also a data breach.
+
+Data protection is the practice of safeguarding sensitive information from data loss and corruption. Its goal is to protect data and ensure its availability and compliance with regulatory requirements.
+
+An effective data protection strategy does more than simply protect data. It also replicates and restores data in the event of loss or damage. This is because the main principles of data protection are to safeguard data and support data availability. Availability means ensuring users can access data for business operations, even if data is damaged, lost or corrupted, such as in a data breach or malware attack.
+
+This focus on data availability helps explain why data protection is closely related to data management, a larger practice focused on managing data throughout its entire lifecycle to ensure it is accurate, secure and capable of being leveraged for strategic business decisions.
+
+Today, data protection strategies encompass both traditional data protection measures, like data backups and restore functions, and business continuity and disaster recovery (BCDR) plans. For this reason, many organizations are adopting services like disaster recovery as a service (DRaaS) as part of their broader data protection strategies.
+
+Industry newsletter
+
+The latest tech news, backed by expert insights
+Stay up to date on the most important—and intriguing—industry trends on AI, automation, data and beyond with the Think newsletter. See the IBM Privacy Statement.
+
+Business email
+johndoe@yourdomain.com
+Subscribe
+
+Data protection vs. data security
+
+While many use the terms data protection and data security interchangeably, they are two distinct fields with crucial differences.
+
+Data security is a subset of data protection focused on protecting digital information from unauthorized access, corruption or theft. It encompasses various aspects of information security, spanning physical security, organizational policies and access controls.
+
+In contrast, data protection encompasses all of data security and goes further by emphasizing data availability.
+
+Both data protection and data security include data privacy. Data privacy focuses on policies that support the general principle that a person should have control over their personal data, including the ability to decide how organizations collect, store and use their data.
+
+In other words, data security and data privacy are both subsets within the broader field of data
+
+The General Data Protection Regulation (GDPR) is a comprehensive data privacy framework enacted by the European Union (EU) to safeguard the personal information of individuals, referred to as “data subjects.” 
+
+GDPR focuses primarily on personally identifiable information, or PII, and places stringent compliance requirements on data providers. It mandates that organizations within and outside Europe be transparent about their data collection practices. Organizations must also adopt some specific data protection measures, like appointing a data protection officer to oversee data handling.
+
+The GDPR also grants EU citizens greater control over their PII and more protection of personal data such as name, ID number, medical information, biometric data and more. The only data processing activities exempt from the GDPR are national security or law enforcement activities and purely personal uses of data.
+
+One of the GDPR's most striking aspects is its uncompromising stance on non-compliance. It imposes substantial fines for those who fail to adhere to its privacy regulations. These fines can reach up to 4 percent of an organization's annual global turnover or EUR 20 million, whichever is greater.
+
+
+class SignUpForm(UserCreationForm):
+    email = forms.EmailField(required=True)
+
+    class Meta:
+        model = User
+        fields = ["username", "email", "password1", "password2"]
+
+
+        
+        def post_detail(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    comments = post.comments.filter(active=True)
+
+    # Handle form submission
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            # Don't save to DB yet
+            new_comment = form.save(commit=False)
+            new_comment.post = post
+            new_comment.author = request.user if request.user.is_authenticated else None
+            new_comment.save()
+            return redirect('post_detail', pk=post.pk)
+    else:
+        form = CommentForm()
+
+        return render(request, 'blog/post_detail.html', }
+        'post': post,
+        'comments': comments,
+        'form': form

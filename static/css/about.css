@@ -1,0 +1,108 @@
+/* ---------- Base Styles ---------- */
+body {
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: #f9fafc;
+  color: #222;
+  margin: 0;
+  padding: 0;
+}
+
+/* ---------- About Section ---------- */
+.about-container {
+  max-width: 900px;
+  margin: 60px auto;
+  padding: 0 20px;
+}
+
+.about-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.about-header h2 {
+  color: #0077cc;
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.about-header p {
+  color: #555;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* ---------- Content Section ---------- */
+.about-content {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  padding: 30px;
+  line-height: 1.8;
+}
+
+.about-content h3 {
+  color: #0077cc;
+  font-size: 1.3rem;
+  margin-top: 0;
+}
+
+.about-content p {
+  color: #333;
+  margin-bottom: 15px;
+  font-size: 1rem;
+}
+
+/* ---------- Team or Info Cards ---------- */
+.team-section {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.team-card {
+  background: #e33a3a;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(152, 117, 207, 0.08);
+  padding: 20px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.team-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12);
+}
+
+.team-card img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 15px;
+}
+
+.team-card h4 {
+  color: #0077cc;
+  margin: 10px 0 5px;
+  font-size: 1.1rem;
+}
+
+.team-card p {
+  color: #555;
+  font-size: 0.9rem;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+  .about-content {
+    padding: 20px;
+  }
+
+  .about-header h2 {
+    font-size: 1.6rem;
+  }
+
+  .team-section {
+    grid-template-columns: 1fr;
+  }
+}

@@ -2,26 +2,34 @@
 .home{
     background-color: rgb(82, 20, 181);
     padding: 3rem 1rem;
+    text-align: center;
 }
 
-home h1 {
-    color: rgb(224, 16, 34);
+.home h1 {    
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
 }
 
 .home .main-img {
-    border: 2x solid #c61111;
+    border: 2px solid #c61111;
     border-radius: 10px;
-    width: 100%; ;
+    width: 80%;
+    max-width: 600px;
+    height: auto;
     
 }
 
 
 .home .section1 {
     display: flex;
+    justify-content: center;
+    align-items: center;
     gap:1.3rem;
 }
 
 .home .section1 .info {
+    text-align: left;
     padding-right: 10px;
 }
 
@@ -37,7 +45,12 @@ home h1 {
     flex-direction: column;
     text-align: center;
   }
+
+  .home .main-img {
+    width: 80%;
+  }
 }  
+
 
 
 

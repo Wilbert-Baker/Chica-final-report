@@ -22,8 +22,33 @@ Blog Detail
     <label>Created on: {{ blog.created_on}}</label>
 
     <p>{{blog.content|linebreaksbr}}</p>
-    
+
+    <hr>
+    <h4>Post Comments</h4>
+    {% for comment in post.comments.all %}
+    <div class="comment">
+        <p>{{ comment.body }}</p>
+        <small>By {{ comment.author.username }} on {{ comment.created_on }}</small>
+    </div>
+    {%empty %}
+    <p>No comments yet. Be the first!</p>
+    {% endfor %}
+
+    <hr>
+
+    <h3>Add Comment</h3>
+
+
+    {% if user.is_authenticated %} 
+    <form class="comment-form" method="POST" action="{% url 'create_comment' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="hidden" name="id" value="{{post.id}}">
+        <textarea name="comment" rows="3"></textarea>
+        <button type="submit" class="btn btn-primary">Post comment</button>
+    </form>
+    {% else %}
+    <p>You must<a href="{% url 'login' %}">log in</a>to comment.</p>
+    {% endif %}
 </div>
-
-
 {% endblock %}

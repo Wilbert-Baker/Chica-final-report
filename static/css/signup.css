@@ -19,6 +19,7 @@
 }
 .signup form p {
     display: flex;
+    flex-wrap: wrap;
     /*align-item: center; */
 }
 .signup form label {

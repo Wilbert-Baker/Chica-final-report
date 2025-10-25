@@ -17,12 +17,17 @@
           <a class="nav-link" href="{% url 'post-list' %}">Blog</a>
         </li> 
       </ul> 
-      <div class="d-flex"
+      <div class="d-flex align-item-center gap-2">
         {% if user.is_authenticated %} 
-          <span class="btn">Welcome: {{user.username}}</span>
+          <span class="navbar-text text-sucess fw-semibold">
+            Welcome,{{user.username}}
+          </span>
+          <a class="btn btn-outline-danger btn-sm" href="{% url 'logout' %}">Logout</a>
         {% else %}
           <a class="btn btn-outline-success" href="{% url 'login' %}">Login</a>
+          <a class="btn btn-outline-primary" href="{% url 'signup'%}">signup</a>
         {% endif %}
+
     </div>
   </div>
 </nav>

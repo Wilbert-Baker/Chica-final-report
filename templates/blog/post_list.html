@@ -13,6 +13,11 @@ Blog - Chica
 <div class="blog">
     <h1>Blog Posts</h1>
 
+    <div class="add-post">
+        <a href="{% url 'create_post' %}" class="btn btn-primary">+ Add New Post</a>
+        
+    </div>
+
     {% for post in post_list %}
     <div class="post">
         <h2>{{ post.title }}</h2>

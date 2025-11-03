@@ -14,7 +14,7 @@
 </div>
 <h3>produce by</h3>
 <p>Wilbert Baker</p>
-<p></p>The terms “data breach” and “breach” are often used interchangeably with “cyberattack”.
+<p>The terms “data breach” and “breach” are often used interchangeably with “cyberattack”.
  However, not all there are personal attacks against your personal information which is Called
 "Identity theft".There are many way to protect yourself and or your company. Watch what you put on
 the web by guarding your pass words and donot use your birthday date or any of your families dates as well
@@ -33,7 +33,15 @@ also use anti-virus which their are very many on the market her are a few which 
 
 <li><strong>PINKERTON Anti-Virus-- This one is the newest which has just came on the market: 1.regular $35 per month 2. $95 Annually</li>
 </ul>
-
+<hr>
+<div class="contact-info">
+    <h4>Contact</h4>
+    {% if user.is_authenticated %}
+    <p>If you'd like to reach me, send an email to:<a href="mailto:wilb1841@gmail.com">wilb1841@gmail.com</a></p>
+    {% else %}
+    <p><em>Please <a href="{% url 'login' %}">log in</a> to see the contact information.</em></p>
+    {% endif %}
+</div>
 
 
 {%endblock %}

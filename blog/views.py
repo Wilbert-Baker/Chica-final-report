@@ -1,6 +1,6 @@
 from django.views.generic import ListView, DetailView, CreateView, View 
-from django.shortcuts import render,redirect
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.shortcuts import render,redirect
 from .models import Post, Comment
 
 
@@ -19,16 +19,16 @@ LoginView    = LogIn
 
 """
 # create your views here.
-class BlogListView(ListView):
+class BlogListView(LoginRequiredMixin, ListView):
     model = Post
     template_name = "blog/post_list.html"
     
     
-class PostDetail(DetailView):
+class PostDetail(LoginRequiredMixin, DetailView):
     model = Post
     template_name = "blog/detail.html"
 
-class CommentCreateView(View):
+class CommentCreateView(LoginRequiredMixin, View):
     login_url = '/login/'
     redirect_field_name = 'next'
 
@@ -50,7 +50,7 @@ class CommentCreateView(View):
         # send back to details page
         return redirect('post-detail', pk=post.id)
     
-class PostCreateView(CreateView):
+class PostCreateView(LoginRequiredMixin, CreateView):
         login_url = '/login/'
         redirect_field_name = 'next'
 

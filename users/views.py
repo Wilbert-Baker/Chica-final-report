@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from django.contrib.auth.views import LoginView
 from django.views.generic import CreateView
 from django.contrib.auth.models import User
-from .forms import UserLoginForm
+from .forms import UserLoginForm  
 from django.contrib.auth import logout
 from django.contrib.auth.mixins import LoginRequiredMixin
 
@@ -27,12 +27,13 @@ class UserLogin(LoginView):
     template_name = "users/login.html"
 
 
+
 class UserSignup(CreateView):
     model = User
     form_class = UserLoginForm
     template_name = "users/signup.html" 
-    success_url = "/user/login/"
+    success_url = "/users/login/"
 
 def logout_view(request):
     logout(request)
-    return redirect(request, 'users/logout.html')
+    return render(request,'users/logout.html')

@@ -10,7 +10,18 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
+import os
+import certifi
+import environ
 from pathlib import Path
+
+#Secure SSL/TLS Certificates
+os.environ['SSL_CERT_FILE'] = certifi.where()
+# Secure SSL/TLS connection
+# Initialize environment variables
+env = environ.Env()
+environ.Env.read_env()
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -131,3 +142,16 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_URL = '/users/login/'
 LOGIN_REDIRECT_URL = '/'# where to go after login
 LOGOUT_REDIRECT_URL = '/' # where to go after logout
+
+# Initialize environment variables
+env = environ.Env()
+environ.Env.read_env()  # Reads from a .env file if it exists
+
+#Email Configuration
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = env('SMTP_EMAIL')
+EMAIL_HOST_PASSWORD = env('SMTP_PASS') 
+

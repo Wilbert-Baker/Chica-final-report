@@ -158,3 +158,9 @@ class SignUpForm(UserCreationForm):
         'post': post,
         'comments': comments,
         'form': form
+
+# Secure SSL/TLS connection
+os.environ['SSL_CERT_FILE'] = certifi.where()
+# Initialize environment variables
+env = environ.Env()
+environ.Env.read_env()

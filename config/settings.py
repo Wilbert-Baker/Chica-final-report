@@ -36,7 +36,11 @@ SECRET_KEY = 'django-insecure-)%@h**@mhe5ti@!8+nglee1nmhq(t5we=2i29nre*8qo-i3yx(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    'chica-blog-d9807d1e0a3d.herokuapp.com'
+]
 
 
 # Application definition
@@ -54,6 +58,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',

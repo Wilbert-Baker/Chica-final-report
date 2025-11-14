@@ -1,7 +1,8 @@
-from django.views.generic import ListView, DetailView, CreateView, View 
+from django.views.generic import ListView, DetailView, CreateView, View, DeleteView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import render,redirect
+from django.shortcuts import get_object_or_404, render,redirect
 from .models import Post, Comment
+from .forms import CommentForm
 
 
 # Create your views here.
@@ -28,27 +29,35 @@ class PostDetail(LoginRequiredMixin, DetailView):
     model = Post
     template_name = "blog/detail.html"
 
-class CommentCreateView(LoginRequiredMixin, View):
-    login_url = '/login/'
-    redirect_field_name = 'next'
+
+def commentCreateView(request, pk):
+    post = get_object_or_404(Post, pk=pk)
 
 
-    def post(self, request):
-        id = request.POST.get("id") 
-        comment = request.POST.get("comment")
+    if request.method == "POST":
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.post = post
+            comment.author = request.user
+            comment.save()
+            return redirect('post-detail', pk=post.pk)
+    else:
+        form = CommentForm()
 
-        #get the post object
-        post = Post.objects.get(pk=id)
-    
-        #create comment 
-        Comment.objects.create(
-            post=post,
-            author=request.user,
-            body=comment
-        )
+     
+        return render (request, "blog/detail.html"), {'post':post, 'form':form}
 
-        # send back to details page
-        return redirect('post-detail', pk=post.id)
+
+
+
+def delete_post(request, pk):
+    post = get_object_or_404(Post, pk=pk)    
+    post.delete()
+    return redirect('post-list')  # Redirect to your list view or homepage
+
+# send back to details page
+#return redirect('post-detail', pk=post.id)
     
 class PostCreateView(LoginRequiredMixin, CreateView):
         login_url = '/login/'

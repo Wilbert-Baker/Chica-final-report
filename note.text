@@ -164,3 +164,35 @@ os.environ['SSL_CERT_FILE'] = certifi.where()
 # Initialize environment variables
 env = environ.Env()
 environ.Env.read_env()
+## for delete page  ##
+{% extends "base.html" %}
+
+{% block title %}Delete Post{% endblock %}
+
+{% block content %}
+<div class="delete-container" style="max-width: 700px; margin: 50px auto;">
+    
+    <h2 style="color: #c0392b; font-weight: bold;">Delete This Post?</h2>
+    <p style="font-size: 1.1rem;">You're about to permanently delete this blog post:</p>
+
+    <div style="background: #fff5f5; border-left: 4px solid #e74c3c; padding: 20px; border-radius: 8px; margin-top: 20px;">
+        <h3 style="margin-bottom: 10px; color: #e74c3c;">{{ object.title }}</h3>
+        <p>{{ object.body|truncatewords:35 }}</p>
+    </div>
+
+    <form method="POST" style="margin-top: 30px;">
+        {% csrf_token %}
+        
+        <button type="submit" 
+                style="background-color: #e74c3c; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">
+            Yes, Delete Forever
+        </button>
+
+        <a href="{% url 'post-detail' object.pk %}" 
+           style="margin-left: 15px; background-color: #95a5a6; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none;">
+            Cancel
+        </a>
+    </form>
+
+</div>
+{% endblock %}

@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from .forms import UserLoginForm  
 from django.contrib.auth import logout
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.urls import reverse_lazy
 
 
 
@@ -32,7 +33,7 @@ class UserSignup(CreateView):
     model = User
     form_class = UserLoginForm
     template_name = "users/signup.html" 
-    success_url = "/users/login/"
+    success_url = reverse_lazy('users:login')
 
 def logout_view(request):
     logout(request)

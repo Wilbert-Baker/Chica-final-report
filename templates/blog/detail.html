@@ -19,36 +19,55 @@ Blog Detail
 
     <h1>{{ post.title }}</h1>
     <label>Author: {{ post.author.username}}</label>
-    <label>Created on: {{ blog.created_on}}</label>
+    
 
-    <p>{{blog.content|linebreaksbr}}</p>
+    <p>{{post.content|linebreaksbr}}</p>
 
+
+    <a class="btn btn-outline-danger" href="{% url 'test_delete' post.id %}">Delete button</a>
     <hr>
     <h4>Post Comments</h4>
     {% for comment in post.comments.all %}
     <div class="comment">
         <p>{{ comment.body }}</p>
-        <small>By {{ comment.author.username }} on {{ comment.created_on }}</small>
+        <small>By {{ comment.author.username }} on {{ comment.created_on| date:"M d, Y H:i" }}</small>
     </div>
-    {%empty %}
+    {% empty %}
     <p>No comments yet. Be the first!</p>
     {% endfor %}
 
+    
+
     <hr>
 
-    <h3>Add Comment</h3>
+    <h3>Add a Comment</h3>
 
 
     {% if user.is_authenticated %} 
-    <form class="comment-form" method="POST" action="{% url 'create_comment' %}">
+    
+
+   <form method="POST" action="{% url 'create_comment' post.pk %}">
         {% csrf_token %}
         {{ form.as_p }}
-        <input type="hidden" name="id" value="{{post.id}}">
-        <textarea name="comment" rows="3"></textarea>
+        <div class="form-group">
+            <textarea name="body" id="id_body" class="form-control" rows="4" placeholder="Write your comment here..."required></textarea>
+        </div>
         <button type="submit" class="btn btn-primary">Post comment</button>
     </form>
-    {% else %}
-    <p>You must<a href="{% url 'login' %}">log in</a>to comment.</p>
-    {% endif %}
+{% else %}
+    <p>You must <a href="{% url 'login' %}">log in</a> to comment.</p>
+{% endif %}
+
+    <hr>
+
+
+    {% if user == post.author %}
+    <form method="POST" action="{% url 'delete_post' post.id %}">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Delete Post</button>
+    </form>
+
+     {% endif %}
+  
 </div>
 {% endblock %}
